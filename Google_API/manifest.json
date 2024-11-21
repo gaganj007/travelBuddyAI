@@ -1,0 +1,19 @@
+{
+    
+    "manifest_version": 3,
+    "name": "Travel Buddy",
+    "version": "1.0",
+    "background": {
+    "service_worker": "background.js"
+  },
+    "permissions": ["aiLanguageModelOriginTrial", "storage", "tabs"],
+    "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+    "trial_tokens": ["AksWhuWa374EcXoHXdQqKKXNP9K+ow1w1AgrneyVsOCbfjxNAlEOGN2QJaQktFoDzzqtJEMYsZ0JpFZcbgyNmAcAAAB4eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vbGpqaGphYWttbmNpYm9ubmpwYW9nbGJoY2plb2xoa2siLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElGb3JFeHRlbnNpb24iLCJleHBpcnkiOjE3NjA0ODYzOTl9"]
+  }
