@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Itinerary Helper</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 300px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #question {
+      margin-top: 20px;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    #summary-container {
+      display: none; /* Initially hidden */
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+    }
+
+    #summary-container h2 {
+      margin: 0;
+      color: #007bff;
+    }
+
+    #summary-container p {
+      margin: 10px 0 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Psssst!</h1>
+  <p id="question">
+    I see you want to visit <span id="destination">[BLANK]</span>, what would you like me to help you with?
+  </p>
+  <button id="itinerary-btn">Give me an itinerary!</button>
+  <button id="summarize-btn">Summarize it!</button>
+  <button id="translate-btn">Translate it!</button>
+  <button id="no-btn">Nah, I got it!</button>
+  <div id="result" style="margin-top: 20px;"></div>
+
+  <!-- Summary Container -->
+  <div id="summary-container">
+    <h2>Summary</h2>
+    <p id="summary-text">Loading summary...</p>
+  </div>
+
+  <div id="translation-container" style="display: none; margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); background-color: #f9f9f9;">
+    <h2>Translation</h2>
+    <p id="translation-text">Loading translation...</p>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+    
+    "manifest_version": 3,
+    "name": "Travel Buddy",
+    "version": "1.0",
+    "background": {
+    "service_worker": "background.js"
+  },
+    "permissions": ["aiLanguageModelOriginTrial", "storage", "activeTab", "scripting"],
+    "host_permissions": [
+     "https://travelbuddy-f5524.web.app/*"
+  ],
+
+    "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_security_policy": {
+    "script-src": [
+      "'self'",
+      "'unsafe-eval'",
+      "https://www.gstatic.com"
+    ],
+    "object-src": "'self'",
+    "style-src": [
+      "'self'",
+      "'unsafe-inline'"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://travelbuddy-f5524.web.app/*"],  
+      "js": ["content.js"]
+    }
+  ],
+    "trial_tokens": ["AksWhuWa374EcXoHXdQqKKXNP9K+ow1w1AgrneyVsOCbfjxNAlEOGN2QJaQktFoDzzqtJEMYsZ0JpFZcbgyNmAcAAAB4eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vbGpqaGphYWttbmNpYm9ubmpwYW9nbGJoY2plb2xoa2siLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElGb3JFeHRlbnNpb24iLCJleHBpcnkiOjE3NjA0ODYzOTl9"]
+  }

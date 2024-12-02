@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Buddy AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Sanchez&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <!-- Main Heading -->
+  <h1>Travel Buddy AI.</h1>
+  <h2>have fun the easy way</h2>
+
+  <h1>Your Trip</h1>
+  <div class="button-container">
+    <button class="button itinerary-btn" onclick="showSection('itinerary')">Itinerary</button>
+    <button class="button flight-btn" onclick="showSection('flights')">Flight Tickets</button>
+    <button class="button hotel-btn" onclick="showSection('hotels')">Hotel Rooms</button>
+  </div>
+
+  <!-- Itinerary Section -->
+  <div id="itinerary-section" class="section hidden">
+    <div class="carousel">
+      <span class="arrow" onclick="changeDay(-1)">&#8592;</span>
+      <div class="carousel-content" id="itinerary-content">
+        <!-- Dynamic itinerary content will be injected here -->
+      </div>
+      <span class="arrow" onclick="changeDay(1)">&#8594;</span>
+    </div>
+  </div>
+
+  <!-- Flights Section -->
+  <div id="flights-section" class="section hidden">
+    <h2>Available Flights</h2>
+    <div class="flights">
+      <div class="card">Flight A - $300</div>
+      <div class="card">Flight B - $400</div>
+      <div class="card">Flight C - $500</div>
+    </div>
+  </div>
+
+  <!-- Hotels Section -->
+  <div id="hotels-section" class="section hidden">
+    <h2>Available Hotels</h2>
+    <div class="hotels">
+      <div class="card">Hotel A - $150/night</div>
+      <div class="card">Hotel B - $200/night</div>
+      <div class="card">Hotel C - $250/night</div>
+    </div>
+  </div>
+
+  <script>
+    // Get the result from the URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const result = params.get("result") || "No itinerary provided."; // Default to "No itinerary provided" if not present
+
+    // Initial itinerary data
+    let days = [
+      result,               // Day 1 from result
+      "",                   // Day 2 (blank initially)
+      ""                    // Day 3 (blank initially)
+    ];
+
+    let currentDay = 0; // Start from Day 1
+
+    // Function to display the section (Itinerary, Flights, Hotels)
+    function showSection(section) {
+      // Hide all sections
+      document.getElementById("itinerary-section").classList.add("hidden");
+      document.getElementById("flights-section").classList.add("hidden");
+      document.getElementById("hotels-section").classList.add("hidden");
+
+      // Show the requested section
+      document.getElementById(`${section}-section`).classList.remove("hidden");
+
+      // Update itinerary content when the section is "itinerary"
+      if (section === "itinerary") {
+        updateItinerary();
+      }
+    }
+
+    // Function to update the itinerary content for the current day
+    function updateItinerary() {
+      document.getElementById("itinerary-content").innerHTML = `
+        <div class="itinerary-day-card">
+          <h3 class="day-heading">Day ${currentDay + 1}</h3>
+        </div>
+        <div class="itinerary-content-card">
+          <p>${days[currentDay] || "No itinerary provided for this day."}</p>
+        </div>`;
+    }
+
+    // Function to change the day when clicking the arrow buttons
+    function changeDay(offset) {
+      currentDay = (currentDay + offset + days.length) % days.length;
+      updateItinerary(); // Update the content after changing the day
+    }
+
+    // Initially show the itinerary section when the page loads
+    showSection("itinerary");
+  </script>
+</body>
+</html>
